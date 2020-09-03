@@ -2,13 +2,13 @@
 from flask import Flask,jsonify,request
 import json
 import pulp
-
+import os
 
 app = Flask(__name__)
 
 multiplicador = 2
 
-@app.route('/soma/<string:dados>', methods=['POST'])
+@app.route('/resultado/<string:dados>', methods=['POST'])
 def resolver(dados):
     #Pega os dados que é uma string e retorna um dicionário
     obj = json.loads(dados)
@@ -119,4 +119,5 @@ def resolver(dados):
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = os.environ.get('PORT',5000)
+    app.run(host = '0.0.0.0',port=port)
