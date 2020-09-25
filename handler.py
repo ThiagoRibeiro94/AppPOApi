@@ -29,15 +29,6 @@ def resolver(dados):
             up = var['upBound']
             low = var['lowBound']
             cat = var['tipo']
-            
-	
-            low = float(low)
-                
-            if up == '':
-                up = None
-            else:
-                up = float(up)
-            
 
             VAR = pulp.LpVariable(name=nome,lowBound = low,upBound = up,cat = cat)
             new_var = {nome:VAR}
