@@ -68,26 +68,26 @@ def resolver(dados):
                 raw_restricao = raw_restricao.split('>=')
                 code = 3
 
-        rhs = float(raw_restricao[1])
-        lado_esq = raw_restricao[0]
-        lado_esq = lado_esq.split('+')
+            rhs = float(raw_restricao[1])
+            lado_esq = raw_restricao[0]
+            lado_esq = lado_esq.split('+')
 
-        rest = 0
-        for termo in lado_esq:
+            rest = 0
+            for termo in lado_esq:
 
-            termo = termo.split('*')
-            first = float(termo[0])
-            second = dicionario[termo[1]]
-            rest = rest + first*second
+                termo = termo.split('*')
+                first = float(termo[0])
+                second = dicionario[termo[1]]
+                rest = rest + first*second
         
-        restricao_montada = []
-        if code==1:
-            modelo += rest<=rhs
-        elif code==2:
-            modelo += rest == rhs
-            modelo += rest >= rhs
-        else:
-            modelo += rest >= rhs
+            restricao_montada = []
+            if code==1:
+                modelo += rest<=rhs
+            elif code==2:
+                modelo += rest == rhs
+                modelo += rest >= rhs
+            else:
+                modelo += rest >= rhs
 
     def Solucao_Modelo(modelo,dicionario):
         status = modelo.solve()
